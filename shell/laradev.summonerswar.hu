@@ -1,0 +1,55 @@
+#
+#  laradev.summonerswar.hu (/etc/apache2/sites-available/laradev.summonerswar.hu)
+#
+
+<VirtualHost *:80>
+	ServerName dev.vir.com
+	ServerAdmin szatyormail@gmail.com
+	
+	# Indexes + Directory Root.
+	DirectoryIndex index.php
+	DocumentRoot "/vagrant/www/laradev.summonerswar.hu/public"
+		
+	# CGI Directory
+    ScriptAlias /cgi-bin/ /vagrant/www/laradev.summonerswar.hu/cgi-bin/
+    <Location /cgi-bin>
+            Options +ExecCGI
+    </Location>
+	
+	<Directory "/vagrant/www/laradev.summonerswar.hu/public">
+		AllowOverride All
+	</Directory>
+	
+	# Logfiles
+    ErrorLog  /vagrant/www/laradev.summonerswar.hu/logs/error.log
+    CustomLog /vagrant/www/laradev.summonerswar.hu/logs/access.log combined
+	
+</VirtualHost>
+
+<VirtualHost *:443>
+	ServerName dev.vir.com
+	ServerAdmin szatyormail@gmail.com
+	
+	SSLEngine On
+	SSLCertificateFile /etc/ssl/localcerts/apache.pem
+	SSLCertificateKeyFile /etc/ssl/localcerts/apache.key
+	
+	# Indexes + Directory Root.
+	DirectoryIndex index.php
+	DocumentRoot "/vagrant/www/laradev.summonerswar.hu/public"
+	
+	# CGI Directory
+    ScriptAlias /cgi-bin/ /vagrant/www/laradev.summonerswar.hu/cgi-bin/
+    <Location /cgi-bin>
+            Options +ExecCGI
+    </Location>
+		
+	<Directory "/vagrant/www/laradev.summonerswar.hu/public">
+		AllowOverride All
+	</Directory>
+	
+	# Logfiles
+    ErrorLog  /vagrant/www/laradev.summonerswar.hu/logs/error.log
+    CustomLog /vagrant/www/laradev.summonerswar.hu/logs/access.log combined
+	
+</VirtualHost>
