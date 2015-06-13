@@ -26,6 +26,7 @@
 	
 </VirtualHost>
 
+
 <VirtualHost *:443>
 	ServerName dev.vir.com
 	ServerAdmin szatyormail@gmail.com
